@@ -88,20 +88,20 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-hero text-white py-20">
+      <section className="bg-gradient-hero text-white py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in-up">
             Discover Amazing
-            <span className="block text-white/90">Tech Products</span>
+            <span className="block text-white/90 animate-fade-in">Tech Products</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto animate-fade-in">
             Shop the latest technology and electronics with competitive prices and exceptional quality.
           </p>
           <Button
             size="lg"
-            className="bg-white text-primary hover:bg-white/90 hover:shadow-lg text-lg px-8 py-4"
+            className="bg-white text-primary hover:bg-white/90 hover:shadow-lg text-lg px-8 py-4 animate-scale-in hover-lift group"
           >
-            <ShoppingBag className="w-5 h-5 mr-2" />
+            <ShoppingBag className="w-5 h-5 mr-2 group-hover:scale-110 transition-smooth" />
             Shop Now
           </Button>
         </div>
@@ -114,11 +114,11 @@ const Index = () => {
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div key={index} className="text-center group">
-                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-glow transition-smooth">
-                    <Icon className="w-8 h-8 text-white" />
+                <div key={index} className="text-center group animate-fade-in hover-lift" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-glow transition-smooth floating">
+                    <Icon className="w-8 h-8 text-white group-hover:scale-110 transition-smooth" />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-smooth">
                     {feature.title}
                   </h3>
                   <p className="text-muted-foreground">
@@ -134,7 +134,7 @@ const Index = () => {
       {/* Products Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-4xl font-bold text-foreground mb-4">
               Featured Products
             </h2>
@@ -144,17 +144,20 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => (
-              <ProductCard key={product.id} {...product} />
+            {products.map((product, index) => (
+              <div key={product.id} style={{ animationDelay: `${index * 0.1}s` }}>
+                <ProductCard {...product} />
+              </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 animate-fade-in">
             <Button
               size="lg"
-              className="bg-gradient-primary hover:shadow-glow transition-smooth"
+              className="bg-gradient-primary hover:shadow-glow transition-smooth hover-lift group"
             >
               View All Products
+              <Star className="w-5 h-5 ml-2 group-hover:scale-110 transition-smooth" />
             </Button>
           </div>
         </div>
